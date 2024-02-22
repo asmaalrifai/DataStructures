@@ -1,0 +1,11 @@
+public class ShapeBoxE9 <S extends ShapeE10>{
+    
+    S item;
+    
+    public boolean CompareWith(<?> item){      //ShapeE10 item also work,     <?> item
+        
+        return true;
+    }
+    
+    
+}
