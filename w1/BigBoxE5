@@ -1,0 +1,4 @@
+public class BigBoxE5<R,U> {
+    R itemR;
+    U itemU;
+}
