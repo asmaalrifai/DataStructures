@@ -1,0 +1,43 @@
+public class e1 {
+    public static void main(String[] args) {
+        ArrayList list = new ArrayList();
+        /*
+        //adding a string and integer to the same arraylist cuz its generic not specific type
+        String s = "";
+        list.add(s); // being object
+        int i =1; 
+        list.add(i); //integer convert to object
+        */
+        
+        //String k = list.get(1); -> Error
+        /*
+        int b = 0;
+        Object o = b;
+        int c = (int)0;
+        String t = (String)o; //No syntacs error but casting error in run time
+        */
+        
+        BoxE2 b1 = new BoxE2();
+        int i = 0;
+        b1.setItem(i);
+        String s = (String)b1.getItem();
+        
+        BoxE3<String> b2 = new BoxE3<>();
+        b2.setItem(s);
+        int r = Integer.parseInt(b2.getItem()); // now there is no error
+                
+        BoxE3 <PenE4> b3=new BoxE3<>();
+        
+        BoxE3<Integer> b4 = new BoxE3<>();
+        
+        BigBoxE5<String, Integer> bb1 = new BigBoxE5<>(); // Two data types in this class
+        
+        //BigNumberE6<String> bn1 = new BigNumberE6<>();   -> No string in this class just Number Class
+        
+        BigNumberE6<Integer> bn1 = new BigNumberE6<>();
+        BigNumberE6<Double> bn2 = new BigNumberE6<>();
+        
+        ShapeBoxE9<RectangleE7> s1 = new ShapeBoxE9<>();
+        s1.CompareWith("dsa");
+        
+    }
