@@ -1,0 +1,3 @@
+public class BigNumberE6 <N extends Number> {
+    
+}
