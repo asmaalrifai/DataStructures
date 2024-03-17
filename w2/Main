@@ -1,0 +1,9 @@
+public class Main{
+public static void main(String[] args) {
+        CLinkList<Integer> liste = new CLinkList<>();
+        liste.addFirst(5);
+        liste.addFirst(12);
+        liste.addFirst(17);
+        liste.print();
+    }
+}
