@@ -1,0 +1,41 @@
+public class Test {
+
+    public static void main(String[] args) {
+        LinkedList my = new LinkedList(4);
+        my.getHead();
+        my.getTail();
+        my.getLength();
+
+        my.printList();
+
+        my.appeand(3);
+        my.getHead();
+        my.getTail();
+        my.getLength();
+        my.printList();
+
+        my.appeand(5);
+        my.getHead();
+        my.getTail();
+        my.getLength();
+        my.printList();
+
+        my.removeLast();
+        my.getHead();
+        my.getTail();
+        my.getLength();
+        my.printList();
+
+        System.out.println("------------------");
+        LinkedList my2 = new LinkedList(11);
+        my2.appeand(4);
+        my2.printList();
+        System.out.println(my2.removeLast().value);
+        my2.printList();
+        my2.removeLast();
+        my2.printList();
+        my2.removeLast();
+        my2.printList();
+        System.out.println(my2.removeLast()); // not to write .value it will cause an error cuz it is already null
+    }
+}
