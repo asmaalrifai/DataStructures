@@ -1,0 +1,140 @@
+public class BinarySearchTree<T extends Comparable<T>> {
+
+    Node<T> root;
+
+    void insert(T newData) {
+        Node<T> newNode = new Node<>(newData);
+
+        if (root == null) {
+            root = newNode;
+        } else {
+            Node<T> temp = root;
+            while (temp != null) {
+                if (newData.compareTo(temp.data) < 0) {
+                    if (temp.left == null) {
+                        temp.left = newNode;
+                    }
+                    temp = temp.left;
+                } else if (newData.compareTo(temp.data) > 0) {
+                    if (temp.right == null) {
+                        temp.right = newNode;
+                    }
+                    temp = temp.right;
+                } else {
+                    return;
+                }
+            }
+        }
+    }
+
+    void inorder() {
+        System.out.println("inorder: ");
+        inorder(root);
+        System.out.println();
+    }
+
+    void inorder(Node<T> node) {
+        if (node != null) {
+            inorder(node.left);
+            System.out.print(node.data + " ");
+            inorder(node.right);
+        }
+    }
+
+    void delete(T key) {
+        Node<T> parent = null;
+        Node<T> current = null;
+
+        while (current != null && current.data != key) {
+            parent = current;
+            if (key.compareTo(current.data) < 0) {
+                current = current.left;
+            } else {
+                current = current.right;
+            }
+        }
+        if (current == null) {
+            return;
+        }
+        //1st case no child:
+        if (current.left == null && current.right == null) {
+            if (current == root) {
+                root = null;
+            } else {
+                if (current == parent.left) {
+                    parent.left = null;
+                } else {
+                    parent.right = null;
+                }
+            }
+        } //2nd case 1 child
+        else if (current.left == null || current.right == null) {
+            Node<T> child;
+            if (current.left != null) {
+                child = current.left;
+            } else {
+                child = current.right;
+            }
+            if (current == root) {
+                root = child;
+            } else {
+                if (current == parent.left) {
+                    parent.left = child;
+                } else {
+                    parent.right = child;
+                }
+            }
+        }
+        //3rd case 2 child
+        Node<T> successor = current.right;
+        Node<T> successorParent = current;
+
+        while (successor.left != null) {
+            successorParent = successor;
+            successor = successor.left;
+        }
+        current.data = successor.data;
+        if (successor == successorParent.left) {
+            successorParent.left = successor.right;
+        } else {
+            successorParent.right = successor.right;
+
+        }
+    }
+
+    Node<T> findMin() {
+        Node<T> current = root;
+
+        while (current.left != null) {
+            current = current.left;
+        }
+
+        System.out.println("Min: " + current.data);
+        return current;
+    }
+
+    Node<T> findMax() {
+        Node<T> current = root;
+
+        while (current.right != null) {
+            current = current.right;
+        }
+
+        System.out.println("Max: " + current.data);
+        return current;
+    }
+
+    
+
+    int findSize() {
+        return findSize(root);
+        
+    }
+
+    private int findSize(Node<T> node) {
+        if (node == null) {
+            return 0;
+        }
+        return 1 + findSize(node.left) + findSize(node.right);
+    }
+}
